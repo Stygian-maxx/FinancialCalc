@@ -80,7 +80,7 @@ personal_finance_toolkit/
 
 ## 🛠️ Technologies & Tools Used
 
-- **Programming Language**: Python 3.10+
+- **Programming Language**: Python 3.14
 - **Built-in Libraries**: `math` (financial powers & numbers), `sys` (CLI argument parsing), `unittest` (automated testing framework)
 - **Design Pattern**: Object-Oriented Architecture with static utility methods and menu dispatch maps
 - **Version Control**: Git / GitHub
@@ -90,29 +90,25 @@ personal_finance_toolkit/
 ## 🚀 Setup & Installation Guide
 
 ### Prerequisites
-- Python 3.8 or higher installed on your system. Verify installation with:
-  ```bash
-  python --version
-  ```
+- Python 3.14
 
 ### Installation Steps
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/personal-finance-toolkit.git
-   cd personal-finance-toolkit
+   git clone https://github.com/Stygian-maxx/FinancialCalc
    ```
 
 2. **Run the Application**:
-   Execute `main.py` directly from the project root:
+   Execute `code.py` directly from the project root:
    ```bash
-   python main.py
+  
    ```
 
 ---
 
 ## 💡 How to Use (Interactive CLI)
 
-Upon running `python main.py`, the application displays the interactive main menu:
+Upon running `code.py`, the application displays the interactive main menu:
 
 ```text
 Personal Finance Toolkit — estimates only, not financial advice.
