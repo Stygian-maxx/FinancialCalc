@@ -1,6 +1,7 @@
 import math
 import sys
 import unittest
+from unittest import mock
 
 
 def number(value, name, minimum=0):
@@ -255,7 +256,12 @@ class FinanceApp:
             self.count(prompt) if index in integer_inputs else self.amount(prompt)
             for index, prompt in enumerate(prompts)
         ]
-        self.show(title, calculator.calculate(*values))
+        operation = getattr(calculator, "calculate", None)
+        if operation is None:
+            operation = getattr(calculator, "review", None)
+        if operation is None:
+            raise ValueError(f"{calculator.__name__} has no supported calculation method.")
+        self.show(title, operation(*values))
 
     def interest(self):
         result = Fincalc.calculate(
@@ -382,6 +388,15 @@ class calcTests(unittest.TestCase):
             Loancalc.calculate(-100, 5, 12)
         with self.assertRaises(ValueError):
             positive_int(1.5, "Quantity")
+
+    def test_run_calculation_supports_review_methods(self):
+        app = FinanceApp()
+        with mock.patch.object(FinanceApp, "amount", side_effect=[5000, 3000, 500, 6]), \
+             mock.patch.object(FinanceApp, "count", side_effect=[]):
+            app.run_calculation(FinAssistant, "Budget review", (
+                "Monthly take-home income: ", "Monthly expenses: ",
+                "Monthly debt payments: ", "Emergency-fund months: ",
+            ))
 
 
 if __name__ == "__main__":
